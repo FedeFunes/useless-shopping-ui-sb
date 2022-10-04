@@ -1,0 +1,8 @@
+.next
+.env
+.example.env
+README.md
+schema.json
+node_modules
+build
+storybook-static

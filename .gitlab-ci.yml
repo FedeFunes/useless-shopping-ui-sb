@@ -1,0 +1,16 @@
+#include del pipeline por defecto
+include: "https://server-pipeline.management.fravega.com/master/default-ci-cd.yaml"
+
+publish-prod:
+  stage: deployment
+  only:
+    - /^(v|PROD-|DEV-).*$/
+  script:
+    - npm publish
+  when: manual
+  tags:
+    - production-v2
+
+container_scanning:
+  variables:
+    DOCKER_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
